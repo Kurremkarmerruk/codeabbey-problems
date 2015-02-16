@@ -2,13 +2,13 @@ use v6;
 
 my $filename = @*ARGS[0];
 my $fh = open $filename;
-my $numOfPairs = $fh.get;
+my $numOfLists = $fh.get;
 
 my @accum = [];
 
 for $fh.lines -> $line {
-    my $a, $b = $line.split(' ');
-    @accum.push($a < $b ?? $a !! $b);
+    my @lineList = $line.split(' ');
+    @accum.push(@lineList.sort()[0]);
 }
 
 say @accum;
