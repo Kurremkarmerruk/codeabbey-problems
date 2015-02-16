@@ -7,7 +7,7 @@ my $numOfPairs = $fh.get;
 my @accum = [];
 
 for $fh.lines -> $line {
-    my $a, $b = $line.split(' ')[0, 1];
+    my ($a, $b) = $line.split(' ')[0, 1];
     @accum.push($a < $b ?? $a !! $b);
 }
 
