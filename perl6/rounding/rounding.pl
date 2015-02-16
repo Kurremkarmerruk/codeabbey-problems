@@ -8,7 +8,7 @@ my @accum = [];
 
 for $fh.lines -> $line {
     my ($a, $b) = $line.split(' ');
-    if $a % $b * 10 div +$b == 5 {
+    if $a % $b > $b / 2 {
         @accum.push(+$a div +$b + 1);
     } else {
         @accum.push(+$a div +$b);
