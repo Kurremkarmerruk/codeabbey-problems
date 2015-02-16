@@ -7,8 +7,8 @@ my $numOfLists = $fh.get;
 my @accum = [];
 
 for $fh.lines -> $line {
-    my @lineList = $line.split(' ');
-    @accum.push(@lineList.sort()[0]);
+    my ($a, $b, $c) = $line.split(' ');
+    @accum.push($a min $b min $c);
 }
 
 say @accum;
