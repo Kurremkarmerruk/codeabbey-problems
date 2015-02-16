@@ -8,7 +8,7 @@ my @accum = [];
 
 for $fh.lines -> $line {
     my ($a, $b, $c) = $line.split(' ');
-    @accum.push($a min $b min $c);
+    @accum.push(+$a min +$b min +$c);
 }
 
 say @accum;
