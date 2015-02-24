@@ -21,7 +21,7 @@ multi sub infix:<҂>(NegativeInt:D $n, NegativeInt:D $d) {
     given $n % $d {
         when $_ >  $d div 2 { ($n / $d).floor }
         when $_ == $d div 2 { ($n / $d).ceiling }
-        when $_ <  $d div 2 { ($n / $d).floor   }
+        when $_ <  $d div 2 { ($n / $d).ceiling   }
     }
 }
 multi sub infix:<҂>(Int:D $n, Int:D $d) {
