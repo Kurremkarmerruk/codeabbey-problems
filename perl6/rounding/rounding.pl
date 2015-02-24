@@ -6,15 +6,18 @@ my $numOfLists = $fh.get;
 
 my @accum = [];
 
+#= divide rounding up at half
+sub infix:<҂>(Int:D $n, Int:D $d) {
+    given $n % $d {
+        when $_ >  $d div 2 { ($n / $d).ceiling }
+        when $_ == $d div 2 { ($n / $d).ceiling }
+        when $_ <  $d div 2 { ($n / $d).floor   }
+    }
+}
+
 for $fh.lines -> $line {
     my ($a, $b) = $line.split(' ');
-    if $a % $b > $b / 2 {
-        my $result = +$a div +$b;
-        $result += 1 if $result > 0;
-        @accum.push($result);
-    } else {
-        @accum.push(+$a div +$b);
-    }
+    @accum.push(+$a ҂ +$b);
 }
 
 say @accum;
