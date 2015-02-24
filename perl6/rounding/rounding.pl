@@ -28,13 +28,15 @@ multi sub infix:<҂>(Int:D $n, Int:D $d) {
     given $n % $d {
         when $_ >  $d div 2 { ($n / $d).floor   }
         when $_ == $d div 2 { ($n / $d).ceiling }
-        when $_ <  $d div 2 { ($n / $d).floor   }
+        when $_ <  $d div 2 { ($n / $d).ceiling }
     }
 }
 
 for $fh.lines -> $line {
     my ($a, $b) = $line.split(' ');
-    @accum.push(+$a ҂ +$b);
+    my $result = +$a ҂ +$b;
+    # say "Numerator: $a, Divisor: $b,\nFloat Result: { $a / $b }, Roundup result: { $result }\n";
+    @accum.push($result);
 }
 
 say @accum;
